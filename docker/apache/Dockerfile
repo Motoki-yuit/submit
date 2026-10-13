@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y nodejs npm
 WORKDIR /var/www/html
 
+# Apacheのmod_rewriteを有効化（LaravelのURLルーティングに必要）
+RUN a2enmod rewrite
+
 # Node.js 18 のインストール
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
